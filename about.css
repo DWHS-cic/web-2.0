@@ -1,0 +1,269 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Comic Sans MS, cursive, sans-serif;
+  min-height: 100%;
+  background-color: #000;
+}
+/*========== nav狀態列 ==========*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-container {
+  background-color: rgb(0, 0, 0);
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: rgb(121, 121, 121);
+  font-size: 1.5rem;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  background-color: #000000;
+  border-radius: 1.5rem;
+}
+
+.nav-links a:hover {
+  background-color: rgb(112, 202, 251);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s ease;
+}
+
+.nav-logo a {
+  font-size: 2.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+  color: rgb(121, 121, 121);
+}
+/*========== main ==========*/
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: top;
+  align-items: center;
+  gap: 20px;
+  padding-top: 10vh; /* nav高度 */
+  position: relative; /* 粒子背景 */
+  width: 100%;
+  min-height: auto;
+  z-index: 1;
+}
+/*========== 隨機漂浮文字 ==========*/
+.floating-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-bg span {
+  position: absolute;
+  color: rgb(0, 255, 0, 0.2);
+  user-select: none;
+  white-space: nowrap;
+}
+
+/*========== 文字切換方格 ========== */
+.carousel-container {
+  position: relative;
+  width: 60%;
+  height: 50%;
+  margin: 2rem;
+  margin-top: 3rem;
+  overflow: hidden;
+  border: 1px solid #555;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  color: #fff;
+  gap: 1.5rem;
+}
+
+.carousel-item-header {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.carousel-item-description {
+  padding: 0 5vw;
+  font-size: 2rem;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(84, 84, 84, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.carousel-button:hover {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+.carousel-button.next {
+  right: 10px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.carousel-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #555;
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background-color: #fff;
+}
+
+/*========== 歷史時間軸 ==========*/
+.timeline {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 0;
+}
+
+.timeline-title {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.timeline-header {
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.content {
+  color: rgb(255, 255, 255);
+  font-size: 3rem;
+  line-height: 1.2;
+  transform: scale(0.7);
+  opacity: 0.5;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.timeline-item.active .content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.content h3 p {
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+/*========== footer ==========*/
+.footer {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: #111;
+  color: #aaa;
+  padding: 24px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  font-family: Comic Sans MS, cursive, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-icon i {
+  font-size: 1.5rem;
+  color: #aaa;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icon i:hover {
+  color: #70cafb; /* hover 顏色可自訂 */
+  transform: scale(1.2);
+}

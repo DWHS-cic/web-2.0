@@ -1,0 +1,364 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Comic Sans MS, cursive, sans-serif;
+  background-color: #000000;
+  color: #333;
+}
+
+canvas {
+  display: block;
+}
+
+/* ===== 載入畫面 ===== */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.loader::after {
+  content: "|";
+  margin-left: 4px;
+  animation: blink 1s step-start infinite;
+}
+
+/*========== nav狀態列 ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-container {
+  background-color: rgba(0, 0, 0, 0);
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: rgb(121, 121, 121);
+  font-size: 1.5rem;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  background-color: #000000;
+  border-radius: 1.5rem;
+}
+
+.nav-links a:hover {
+  background-color: rgb(112, 202, 251);
+  color: rgb(0, 0, 0);
+  transition: all 0.5s ease;
+}
+
+.nav-logo a {
+  font-size: 2.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+  color: rgb(121, 121, 121);
+}
+
+/*========== main ==========*/
+.main-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: left;
+  gap: 40px;
+  padding-top: 10vh; /* nav高度 */
+  position: relative; /* 粒子背景 */
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  min-height: calc(100vh - 10vh - 2vh);
+}
+
+/*========== 右側資訊列 ==========*/
+.info-section {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  margin: 2rem;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.info-section-top {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex: 1;
+}
+
+.info-section-item {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 10px;
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(255, 254, 254);
+  background-color: rgba(40, 40, 40, 0.5);
+  border-color: rgb(0, 255, 0);
+  border-radius: 1rem;
+  border-width: 1px;
+  border-style: solid;
+  flex: 1;
+}
+.info-section-bottom {
+  width: 100%;
+  height: auto;
+  font-size: 1.2rem;
+  color: #888;
+  flex: 3;
+}
+
+/*========== 粒子背景 ==========*/
+#particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/*========== 打字機效果 ==========*/
+.decrypt-section {
+  height: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(18, 18, 18, 0);
+  border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.decrypt {
+  white-space: pre;
+  font-family: monospace;
+  font-size: 2rem;
+  line-height: 1.8;
+  position: relative;
+  color: #00ff00;
+}
+
+.decrypt::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-start infinite;
+  color: rgb(0, 255, 0);
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ========== 右側資訊欄跳動數字 ========== */
+.count-up-text {
+  font-family: Comic Sans MS, cursive, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.count-up-text .count-number {
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  text-align: right;
+}
+
+.count-up-text .count-number {
+  transition: all 0.5s linear;
+}
+
+/*========== footer ==========*/
+.footer {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: #111;
+  color: #aaa;
+  padding: 24px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  font-family: Comic Sans MS, cursive, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 100%;
+  padding: 0 1rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-icon i {
+  font-size: 1.5rem;
+  color: #aaa;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icon i:hover {
+  color: #70cafb;
+  transform: scale(1.2);
+}
+
+/*========== 響應式設計 ==========*/
+
+/* 平板以下（含手機）*/
+@media (max-width: 1024px) {
+  .navbar {
+    width: 100%;
+  }
+  .main-container {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    gap: 0;
+  }
+
+  .decrypt-section {
+    width: 100%;
+    margin: 0;
+    margin-top: 1rem;
+    padding-bottom: 0;
+    flex: 1;
+  }
+
+  .decrypt {
+    font-size: 1.2rem;
+  }
+
+  .info-section {
+    margin: 0rem;
+    padding: 1rem;
+  }
+
+  .info-section-top {
+    flex-direction: column;
+  }
+
+  .info-section-item {
+    font-size: 1.6rem;
+    background-color: rgb(40, 40, 40, 0.3);
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* 手機 */
+@media (max-width: 768px) {
+  .nav-container {
+    height: auto;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .nav-logo a {
+    font-size: 2rem;
+    margin-left: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    margin: 4px;
+    padding: 6px 10px;
+  }
+
+  .decrypt {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .count-up-text {
+    font-size: 1.4rem;
+  }
+
+  .footer-text {
+    font-size: 0.7rem;
+  }
+}
