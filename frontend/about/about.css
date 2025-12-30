@@ -264,6 +264,6 @@ body {
 }
 
 .footer-icon i:hover {
-  color: #70cafb; /* hover 顏色可自訂 */
+  color: #70cafb;
   transform: scale(1.2);
 }

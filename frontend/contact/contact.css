@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Comic Sans MS, cursive, sans-serif;
+  background-color: #000;
+  min-height: 100%;
+  color: #fff;
+}
+
+/* ========== navbar ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav-container {
+  background-color: #000;
+  height: clamp(56px, 8vh, 80px);
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo a {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(121, 121, 121);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgb(121, 121, 121);
+  font-size: clamp(0.9rem, 3.5vw, 1.5rem);
+  padding: 6px 12px;
+  margin: 4px;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: rgb(112, 202, 251);
+  color: #000;
+}
+
+/* ========== main ========== */
+.main-container {
+  min-height: calc(100svh - clamp(56px, 8vh, 80px));
+  padding-top: clamp(56px, 8vh, 80px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #0b0f14, #0f1720, #07090d);
+}
+
+/* ========== 聯絡方式區域 ========== */
+.contact-card {
+  width: min(92%, 480px);
+  padding: clamp(1.2rem, 4vw, 2.5rem);
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  text-align: center;
+}
+
+.contact-card h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.contact-card p {
+  font-size: clamp(0.95rem, 4vw, 1.5rem);
+  color: rgb(194, 194, 194);
+  margin-bottom: 1.6rem;
+}
+
+/* ========== 聯絡方式項目 ========== */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.contact-links a {
+  width: 100%;
+  max-width: 320px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  font-size: clamp(0.95rem, 4vw, 1.5rem);
+  color: #e601ff;
+  text-decoration: none;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-links a:hover {
+  opacity: 0.75;
+  transform: translateY(-2px);
+}
+
+/* ========== footer ========== */
+.footer {
+  width: 100%;
+  background-color: #111;
+  color: #aaa;
+
+  padding: 1.5rem 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-icon i {
+  font-size: 1.5rem;
+  color: #aaa;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-icon i:hover {
+  color: #70cafb;
+  transform: scale(1.2);
+}
+
+/* ========== 自適應 ========== */
+@media (max-width: 480px) {
+  .nav-links a {
+    padding: 6px 8px;
+  }
+
+  .contact-links {
+    gap: 1rem;
+  }
+}
