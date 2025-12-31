@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Comic Sans MS, cursive, sans-serif;
+  background-color: #000;
+  min-height: 100%;
+  color: #fff;
+}
+
+/* ========== navbar ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.nav-container {
+  background-color: #000;
+  height: clamp(56px, 8vh, 80px);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo a {
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(121, 121, 121);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+.nav-links a {
+  color: rgb(121, 121, 121);
+  font-size: clamp(0.9rem, 3.5vw, 1.5rem);
+  padding: 6px 12px;
+  margin: 4px;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 1.5rem;
+  transition: all 0.3s ease;
+}
+.nav-links a:hover {
+  background-color: rgb(112, 202, 251);
+  color: #000;
+}
+
+/* ========== main ========== */
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10vh;
+  padding-bottom: 50px;
+}
+
+.main-container h1 {
+  color: #fff;
+  margin: 2rem 0;
+}
+
+/* ========== member grid ========== */
+.eb-member-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  width: 90%;
+  max-width: 1200px;
+}
+/* ========== 屆數標題 ========== */
+.member-year {
+  color: #fff;
+  margin: 2rem 0 1rem;
+  width: 100%;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ========== 幹部個人框(電流邊框) ========== */
+.member-card {
+  position: relative;
+  width: 15rem;
+  padding: 1.5rem;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background-color: #303030;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 2px solid rgb(0, 255, 0);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.member-card img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+  flex: 1;
+}
+
+.member-card .eb-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.member-card .eb-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.member-info {
+  margin: 0.5rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2rem;
+}
+
+/* ========== footer ========== */
+.footer {
+  width: 100%;
+  background-color: #111;
+  color: #aaa;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-text {
+  font-size: 0.9rem;
+}
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-icon i {
+  font-size: 1.5rem;
+  color: #aaa;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.footer-icon i:hover {
+  color: #70cafb;
+  transform: scale(1.2);
+}
