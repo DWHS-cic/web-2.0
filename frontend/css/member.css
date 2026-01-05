@@ -162,6 +162,7 @@ body {
   width: 100%;
   background-color: #111;
   color: #aaa;
+  margin-top: 10vh;
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: center;
