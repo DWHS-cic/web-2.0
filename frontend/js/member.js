@@ -1,6 +1,9 @@
-/** member.js **/
+/**
+ * member.js - Member page specific logic
+ * Handles: member card rendering with ElectricBorder canvas animation
+ */
 
-// 幹部資料，新增 year 欄位代表屆別
+// ========== Member Data ==========
 const members = [
   {
     year: "116th",
@@ -79,7 +82,11 @@ const members = [
 
 const gridContainer = document.getElementById("eb-member-grid");
 
-// ----------- ElectricBorder 函式（保持原本不變） -----------
+// ========== ElectricBorder Animation ==========
+/**
+ * ElectricBorder - Renders animated electric border effect on canvas
+ * @param {HTMLCanvasElement} canvas - Canvas element to draw on
+ */
 function ElectricBorder(canvas) {
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
@@ -306,38 +313,48 @@ function ElectricBorder(canvas) {
   requestAnimationFrame(draw);
 }
 
-// ----------- 初始化會員卡片（多屆版） -----------
-let currentYear = "";
-members.forEach((m) => {
-  if (m.year !== currentYear) {
-    currentYear = m.year;
-    const yearTitle = document.createElement("h2");
-    yearTitle.textContent = currentYear;
-    yearTitle.className = "member-year";
-    gridContainer.appendChild(yearTitle);
-  }
+// ========== Initialize Member Grid ==========
+/**
+ * Renders member cards with electric borders
+ */
+function initMemberGrid() {
+  if (!gridContainer) return;
 
-  const card = document.createElement("div");
-  card.className = "member-card";
+  let currentYear = "";
+  members.forEach((m) => {
+    if (m.year !== currentYear) {
+      currentYear = m.year;
+      const yearTitle = document.createElement("h2");
+      yearTitle.textContent = currentYear;
+      yearTitle.className = "member-year";
+      gridContainer.appendChild(yearTitle);
+    }
 
-  const canvasContainer = document.createElement("div");
-  canvasContainer.className = "eb-canvas-container";
-  const canvas = document.createElement("canvas");
-  canvas.className = "eb-canvas";
-  canvasContainer.appendChild(canvas);
+    const card = document.createElement("div");
+    card.className = "member-card";
 
-  const img = document.createElement("img");
-  img.src = m.src;
-  img.alt = m.name;
+    const canvasContainer = document.createElement("div");
+    canvasContainer.className = "eb-canvas-container";
+    const canvas = document.createElement("canvas");
+    canvas.className = "eb-canvas";
+    canvasContainer.appendChild(canvas);
 
-  const info = document.createElement("div");
-  info.className = "member-info";
-  info.innerHTML = `<p>${m.role} - ${m.name}</p>`;
+    const img = document.createElement("img");
+    img.src = m.src;
+    img.alt = m.name;
 
-  card.appendChild(canvasContainer);
-  card.appendChild(img);
-  card.appendChild(info);
-  gridContainer.appendChild(card);
+    const info = document.createElement("div");
+    info.className = "member-info";
+    info.innerHTML = `<p>${m.role} - ${m.name}</p>`;
 
-  ElectricBorder(canvas);
-});
+    card.appendChild(canvasContainer);
+    card.appendChild(img);
+    card.appendChild(info);
+    gridContainer.appendChild(card);
+
+    ElectricBorder(canvas);
+  });
+}
+
+// ========== Initialize on page load ==========
+window.addEventListener("DOMContentLoaded", initMemberGrid);

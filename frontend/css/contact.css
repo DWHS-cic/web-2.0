@@ -11,6 +11,17 @@ body {
   color: #fff;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* ========== navbar ========== */
 .navbar {
   position: fixed;
@@ -62,6 +73,7 @@ body {
 .main-container {
   min-height: calc(100svh - clamp(56px, 8vh, 80px));
   padding-top: clamp(56px, 8vh, 80px);
+  flex: 1;
 
   display: flex;
   justify-content: center;
@@ -139,6 +151,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
 }
 
 .footer-content {
@@ -169,7 +182,7 @@ body {
   transform: scale(1.2);
 }
 
-/* ========== 自適應 ========== */
+/* ========== RWD ========== */
 @media (max-width: 480px) {
   .nav-links a {
     padding: 6px 8px;

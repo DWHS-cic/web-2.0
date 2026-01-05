@@ -4,12 +4,20 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   height: 100%;
   width: 100%;
   font-family: Comic Sans MS, cursive, sans-serif;
   background-color: #000000;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 canvas {
@@ -100,9 +108,9 @@ canvas {
   padding-top: 10vh; /* nav高度 */
   position: relative; /* 粒子背景 */
   width: 100%;
-  height: 100vh;
+  height: auto;
   z-index: 1;
-  min-height: calc(100vh - 10vh - 2vh);
+  min-height: calc(100vh - 10vh);
 }
 
 /*========== 右側資訊列 ==========*/
@@ -244,6 +252,9 @@ canvas {
   bottom: 0;
   font-family: Comic Sans MS, cursive, sans-serif;
 }
+.footer {
+  margin-top: auto;
+}
 
 .footer-content {
   display: flex;
@@ -360,5 +371,51 @@ canvas {
 
   .footer-text {
     font-size: 0.7rem;
+  }
+}
+
+/* Additional RWD refinements */
+@media (max-width: 1200px) {
+  .decrypt-section {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  .decrypt {
+    font-size: 1.4rem;
+  }
+
+  .info-section {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding-top: 12vh;
+    gap: 12px;
+  }
+
+  .decrypt {
+    font-size: 0.95rem;
+  }
+
+  .info-section-top {
+    gap: 0.5rem;
+  }
+
+  #particles-container {
+    display: none;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    padding: 6px 8px;
+  }
+
+  .info-section-item {
+    font-size: 1.1rem;
   }
 }

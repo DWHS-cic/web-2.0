@@ -9,6 +9,17 @@ body {
   min-height: 100%;
   background-color: #000;
 }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 /*========== nav狀態列 ==========*/
 .navbar {
   position: fixed;
@@ -237,6 +248,9 @@ body {
   bottom: 0;
   font-family: Comic Sans MS, cursive, sans-serif;
 }
+.footer {
+  margin-top: auto;
+}
 
 .footer-content {
   display: flex;
@@ -266,4 +280,153 @@ body {
 .footer-icon i:hover {
   color: #70cafb;
   transform: scale(1.2);
+}
+
+/* ========== RWD ========== */
+
+/*========== Responsive adjustments ==========*/
+@media (max-width: 1024px) {
+  .carousel-container {
+    width: 80%;
+    margin-top: 2rem;
+    height: auto;
+  }
+
+  .carousel-item-header {
+    font-size: 2rem;
+  }
+
+  .carousel-item-description {
+    font-size: 1.25rem;
+    padding: 0 4vw;
+  }
+
+  .timeline-title {
+    font-size: 2.5rem;
+  }
+
+  .content {
+    font-size: 1.8rem;
+    transform: scale(0.9);
+  }
+
+  .nav-container {
+    height: 8vh;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 8px;
+    margin: 6px;
+  }
+
+  .nav-logo a {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 92%;
+    height: auto;
+  }
+
+  .carousel-item {
+    padding: 12px;
+  }
+
+  .carousel-item-header {
+    font-size: 1.6rem;
+  }
+
+  .carousel-item-description {
+    font-size: 1rem;
+    padding: 0 6vw;
+  }
+
+  .timeline-title {
+    font-size: 2rem;
+  }
+
+  .timeline-header {
+    font-size: 1.2rem;
+  }
+
+  .content {
+    font-size: 1.2rem;
+    transform: scale(1);
+    opacity: 1;
+    line-height: 1.4;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 12px;
+  }
+
+  .floating-bg {
+    display: none;
+  }
+
+  .footer {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    height: auto;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .nav-logo a {
+    font-size: 2rem;
+    margin-left: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    margin: 4px;
+    padding: 6px 10px;
+  }
+
+  .carousel-indicators {
+    bottom: 6px;
+    gap: 4px;
+  }
+
+  .carousel-button {
+    font-size: 18px;
+    padding: 6px 8px;
+  }
+
+  .timeline {
+    padding: 0 0.5rem;
+  }
+
+  .content h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .carousel-item-description {
+    font-size: 0.95rem;
+  }
 }

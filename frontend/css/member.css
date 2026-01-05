@@ -11,6 +11,17 @@ body {
   color: #fff;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* ========== navbar ========== */
 .navbar {
   position: fixed;
@@ -55,13 +66,13 @@ body {
 /* ========== main ========== */
 .main-container {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 10vh;
-  padding-bottom: 50px;
+  padding-bottom: 0;
+  flex: 1;
 }
 
 .main-container h1 {
@@ -179,3 +190,5 @@ body {
   color: #70cafb;
   transform: scale(1.2);
 }
+
+/* ========== RWD ========== */

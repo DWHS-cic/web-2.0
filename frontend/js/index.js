@@ -1,83 +1,26 @@
-// ========== Loading & 動畫 ==========
+/**
+ * index.js - Home page specific logic
+ * Handles: count-up animations, decrypt text, particle background
+ */
+
+import { AnimationUtils } from "./main.js";
+
+// ========== Decrypt & Count-up Animations (triggered after loading) ==========
 window.addEventListener("load", () => {
   setTimeout(() => {
-    // 隱藏 loading
-    document.getElementById("loading-screen").classList.add("hidden");
-
-    // 打字機
+    // Decrypt animation
     document.querySelectorAll(".decrypt").forEach((el) => {
-      const CHARS =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-
-      class TypeDecryptText {
-        constructor(element, options = {}) {
-          this.el = element;
-          this.text = element.innerText;
-          this.speed = options.speed || 50;
-          this.scrambleTimes = options.scrambleTimes || 2;
-          this.index = 0;
-          this.scrambleCount = 0;
-          this.el.textContent = "";
-          this.startStep();
-        }
-
-        startStep() {
-          if (this.index >= this.text.length) return;
-          const currentChar = this.text[this.index];
-
-          if (currentChar === "\n" || currentChar === " ") {
-            this.el.textContent += currentChar;
-            this.index++;
-            this.scrambleCount = 0;
-          } else if (this.scrambleCount < this.scrambleTimes) {
-            this.el.textContent =
-              this.text.slice(0, this.index) +
-              CHARS[Math.floor(Math.random() * CHARS.length)];
-            this.scrambleCount++;
-          } else {
-            this.el.textContent = this.text.slice(0, this.index + 1);
-            this.index++;
-            this.scrambleCount = 0;
-          }
-
-          const randomSpeed = Math.floor(Math.random() * 70) + 30;
-          setTimeout(() => this.startStep(), randomSpeed);
-        }
-      }
-
-      new TypeDecryptText(el, { speed: 50, scrambleTimes: 2 });
+      AnimationUtils.typeDecryptEffect(el, { speed: 50, scrambleTimes: 2 });
     });
 
-    // count-up動畫
-    function animateCountUp(el) {
-      const to = parseFloat(el.dataset.to);
-      const duration = parseFloat(el.dataset.duration) || 2;
-      const from = 0;
-      let startTime = null;
-
-      const step = (timestamp) => {
-        if (!startTime) startTime = timestamp;
-        const elapsed = (timestamp - startTime) / 1000;
-        const progress = Math.min(elapsed / duration, 1);
-        const current = from + (to - from) * progress;
-
-        el.textContent = Math.floor(current);
-
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      };
-
-      requestAnimationFrame(step);
-    }
-
+    // Count-up animation
     document.querySelectorAll(".count-number").forEach((el) => {
-      animateCountUp(el);
+      AnimationUtils.animateCountUp(el);
     });
-  }, 2000); // 2秒延遲後開始
+  }, 2000); // Match loading screen delay
 });
 
-// *********** 粒子背景動畫' ***********
+// ========== Particle Background Animation ==========
 import {
   Renderer,
   Camera,
